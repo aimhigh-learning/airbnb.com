@@ -1,0 +1,2 @@
+# airbnb.com
+Airbnb receives house and hotel room reservation requests from customers. These customers are from different time zones around the world. Airbnb customer service center calls these customers to confirm their reservations. The customer service center runs 24x7. But calls to specific customers should be made only between 8 AM to 8 PM on weekdays in the customer's timezone. Our job is to design and build this application.
