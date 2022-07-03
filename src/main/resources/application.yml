@@ -22,3 +22,8 @@ logging:
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
+## rabbit mq configuration
+spring.rabbitmq.password: guest
+spring.rabbitmq.username: guest
+spring.rabbitmq.host: localhost
+spring.rabbitmq.port: 5672

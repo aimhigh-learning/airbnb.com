@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<!-- Bootstrap Core Css -->
+	<link href="/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid  h-100" style="background-color: #bdd7ea;">
+		<div
+			class="row d-flex flex-column min-vh-100 justify-content-center align-items-center">
+			<div class="row">
+				<div class="col-4"></div>
+				<div class="col-4">
+					<form method="post" action="/perform_login">
+						<div class="mb-3">
+							<label for="userNameInput" class="form-label">User name</label> <input
+								type="text" name="user_name" class="form-control"
+								id="userNameInput" >
+						</div>
+						<div class="mb-3">
+							<label for="exampleInputPassword1" class="form-label">Password</label>
+							<input type="password" class="form-control" name="password"
+								id="exampleInputPassword1">
+						</div>
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+
+</body>
+</html>
