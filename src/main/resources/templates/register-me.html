@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>Customer registration page</title>
+    <link href="/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="/css/custom.css" type="text/css" rel="stylesheet">
+    <style>
+        body {
+            overflow:hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="justify-content-center">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-8">
+            <h3>Welcome to airbnb.com </h3>
+        </div>
+    </div>
+
+    <div class="row" style="height:20px"></div>
+
+    <div class="list-group">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <div class="alert alert-success" role="alert" id="success_alert" style="display:none">
+
+                </div>
+
+                <div class="alert alert-danger" role="alert" id="danger_alert" style="display:none">
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="userNameInput" class="form-label">User name</label>
+                    <input type="text" name="name" class="form-control" id="userNameInput" >
+                </div>
+                <div class="mb-3">
+                    <label for="phNumber" class="form-label">Phone number</label>
+                    <input type="text" name="phNumber" class="form-control" id="phNumber" >
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" name="address" class="form-control" id="address" >
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-primary" onclick="reg_cus()">Book now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+
+<script src="/js/jquery.min.js" rel="script"></script>
+<script>
+    const reg_cus = () =>{
+        const req = {name:$('#userNameInput').val() , phNumber: $('#phNumber').val(), address: $('#address').val()};
+        $.ajax({
+            url : `/customer/reg/_new`,
+            method : 'post',
+            dataType : 'json',
+            contentType : "application/json",
+            data: JSON.stringify(req),
+            success : function(data) {
+                console.log(data);
+                $('#success_alert').show();
+                $('#success_alert').html(`Accepted, for status please use this id. <span style="font-weight:bold">${data.data}</span>`);
+            },
+            error: function(err) {
+                $('#danger_alert').show();
+                $('#danger_alert').html(`Something went wrong !!!`);
+            }
+
+        });
+    }
+
+</script>
+
+</html>

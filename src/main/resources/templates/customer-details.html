@@ -1,0 +1,100 @@
+<html>
+<head>
+    <title>Customer registration page</title>
+    <link href="/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="/css/custom.css" type="text/css" rel="stylesheet">
+    <style>
+        body {
+            overflow:hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="justify-content-center">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-8">
+            <h3>Welcome to airbnb.com , Booking status</h3>
+        </div>
+    </div>
+
+    <div class="row" style="height:20px"></div>
+
+    <div class="list-group">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label for="userNameInput" class="form-label">Customer id</label>
+                    <input type="text" name="customerId" class="form-control" id="userNameInput" >
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-primary" onclick="reg_cus()">Check status</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4" id="cus_details">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+
+<script src="/js/jquery.min.js" rel="script"></script>
+<script>
+    const reg_cus = () =>{
+        const req = $('#userNameInput').val();
+        $.ajax({
+            url : `/customer/get?_id=${req}`,
+            method : 'get',
+            dataType : 'json',
+            contentType : "application/json",
+            success : function(data) {
+                console.log(data);
+                $('#cus_details').html(`
+
+                    <div class="mb-3">
+                        <label for="userNameInput" class="form-label">Name</label>
+                        <input type="text" disabled name="customerId" class="form-control" id="userNameInput" value="${data.name}">
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="phNumber" class="form-label">Phone number</label>
+                        <input type="text" disabled name="phNumber" class="form-control" id="phNumber" value="${data.phNumber}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" disabled name="address" class="form-control" id="address" value="${data.address}">
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="timeZone" class="form-label">Timezone</label>
+                        <input type="text" disabled name="timeZone" class="form-control" id="timeZone" value="${data.timeZone}">
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status: ${data.status}</label>
+                    </div>
+                `);
+            },
+            error: function(err) {
+
+            }
+
+        });
+    }
+
+</script>
+
+</html>

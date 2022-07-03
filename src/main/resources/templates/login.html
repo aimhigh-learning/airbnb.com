@@ -24,7 +24,17 @@
 							<input type="password" class="form-control" name="password"
 								id="exampleInputPassword1">
 						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<div class="row">
+							<div class="col-6">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+							<div class="col-3">
+								<button type="button" class="btn btn-success" onclick="register_me()">Book ticket</button>
+							</div>
+							<div class="col-3">
+								<button type="button" class="btn btn-info" onclick="check_status()">Check status</button>
+							</div>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -35,4 +45,18 @@
 
 
 </body>
+<script src="/js/jquery.min.js" rel="script"></script>
+<script>
+	const register_me = () => {
+		$('body').append(`<a href="/customer/register-me" id="reg_me"></a>`);
+		$('#reg_me')[0].click();
+		$('#reg_me').remove();
+	}
+
+	const check_status = () => {
+		$('body').append(`<a href="/customer/check-status" id="chck_status"></a>`);
+		$('#chck_status')[0].click();
+		$('#chck_status').remove();
+	}
+</script>
 </html>

@@ -33,5 +33,12 @@ public class CustomerService {
     public Page<CustomerEntity> getCustomers(String serachString) {
         return customerRepository.findAll(Pageable.ofSize(Integer.MAX_VALUE));
     }
+
+    public String updateStatus(String id , CustomerEntity.Status status) {
+        CustomerEntity ce =  customerRepository.findById(id).get();
+        ce.setStatus(status);
+        customerRepository.save(ce);
+        return ce.getCustomerId();
+    }
 }
 

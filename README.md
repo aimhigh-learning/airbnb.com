@@ -1,9 +1,35 @@
 # airbnb.com
 Airbnb receives house and hotel room reservation requests from customers. These customers are from different time zones around the world. Airbnb customer service center calls these customers to confirm their reservations. The customer service center runs 24x7. But calls to specific customers should be made only between 8 AM to 8 PM on weekdays in the customer's timezone. Our job is to design and build this application.
 
-###Postman API documentation 
+### Postman API documentation 
 https://documenter.getpostman.com/view/12667547/UzJEUL5u
 
+### For admin section /admin/**
+    username : admin 
+    password : nimda
+    With default role ADMIN
+
+### Login page 
+![airbnb login page](https://i.pinimg.com/originals/44/2a/31/442a31fb201214411571b8e7fa8b0244.jpg)
+
+### Admin welcome page
+![welcome page](https://i.pinimg.com/originals/dc/f1/a1/dcf1a13a748eef28939d89aa84763c59.jpg)
+
+### Add new customer page
+![customer page](https://i.pinimg.com/originals/33/d3/a9/33d3a92eda0cb8a131d29c6e76a07138.jpg)
+
+### Customer status page 
+![status page](https://i.pinimg.com/originals/dd/2e/28/dd2e28ca05899bfc7c1135c3414b9dfb.jpg)
+
+
+### Admin call the customer 
+![airbnb call_customer](https://i.pinimg.com/originals/e4/48/ca/e448caf5682149fa2f648975e4bdec30.jpg)
+
+
+### System rabbitmq
+![airbnb rabbitmq](https://i.pinimg.com/originals/e9/bd/08/e9bd081e91f5160ba7ed8dc80611710e.jpg)
+
+ 
 ### Reference Documentation
 For further reference, please consider the following sections:
 

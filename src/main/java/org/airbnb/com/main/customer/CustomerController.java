@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.airbnb.com.main.rmq.Queues;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,14 +30,26 @@ public class CustomerController {
     @Autowired
     private Queues queues;
 
+
+    @GetMapping(path = "/register-me")
+    public String customerRegPage() {
+        return "register-me";
+    }
+
+    @GetMapping(path = "/check-status")
+    public String customerStatusPage() {
+        return "customer-details";
+    }
+
+
     @PostMapping(path = "/reg/_new")
     @ResponseBody
-    public String regCustomer(@RequestBody CustomerEntity customerEntity, TimeZone timezone) throws JsonProcessingException {
+    public ResponseEntity<ResponseDto> regCustomer(@RequestBody CustomerEntity customerEntity, TimeZone timezone) throws JsonProcessingException {
         customerEntity.setTimeZone(timezone.getID());
         customerEntity.setCustomerId(UUID.randomUUID().toString());
         byte[] sendBody = new ObjectMapper().writeValueAsBytes(customerEntity);
         rabbitTemplate.convertAndSend(queues.getQueue_name(), sendBody);
-        return customerEntity.getCustomerId();
+        return ResponseEntity.ok(new ResponseDto().setMessage("Accepted").setStatus(HttpStatus.CREATED).setData(customerEntity.getCustomerId()));
     }
 
     @GetMapping(path = "get")
